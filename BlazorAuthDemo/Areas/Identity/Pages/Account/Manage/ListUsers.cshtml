@@ -1,0 +1,41 @@
+﻿@page
+@model ListUsersModel
+@{
+    if (Model.Users == null)
+    {
+        return;
+    }
+    ViewData["Title"] = "List of all users";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@{
+    if (User.IsInRole("SuperAdmin")) {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>User name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var user in Model.Users)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => user.UserName)
+                    </td>
+                    <td>
+                        <a asp-page="./AddUserToRole" asp-route-id="@user.Id" class="btn btn-primary">Add To Role</a>
+                        &nbsp;
+                        <a asp-page="./RemoveUserFromRole" asp-route-id="@user.Id" class="btn btn-danger">Remove From Role</a>
+                    </td>
+                </tr>
+            }                
+            </tbody>
+        </table>
+        @:&nbsp;
+        <a href="~/" class="btn btn-primary">Home</a>
+    }
+}
