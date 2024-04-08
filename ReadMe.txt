@@ -2,13 +2,7 @@ Run the BlazorAuthDemoDbScript to create the tables necessary to use this applic
 
 See this video for details of how authentication can be added to an application from scratch without using the scaffolding method.
 
-https://www.youtube.com/watch?v=LBByZRhyZ8U&t=2s
-
-All amendments made to add the authentication and authorization have been commented like this:
-
-// AuthAddition
-
-so a search for that should help to identify the changes.
+https://www.youtube.com/watch?v=LBByZRhyZ8U&
 
 The 'Areas' folder is completely new so does not have the above commented text. This folder and its subfolders contain the register, login and logout UI and code
 
