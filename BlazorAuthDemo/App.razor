@@ -1,8 +1,18 @@
 ﻿<CascadingAuthenticationState>
     <Router AppAssembly="@typeof(App).Assembly">
         <Found Context="routeData">
-            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-            <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+            <AuthorizeView>
+                <Authorized>
+                    <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+                    <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+                </Authorized>
+                <NotAuthorized>
+                    @if (context.User.Identity != null && !context.User.Identity.IsAuthenticated)
+                    {
+                        <LoginRedirect ReturnUrl="@ReturnUrl" />
+                    }                    
+                </NotAuthorized>
+            </AuthorizeView>     
         </Found>
         <NotFound>
             <PageTitle>Not found</PageTitle>
